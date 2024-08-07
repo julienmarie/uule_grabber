@@ -20,7 +20,7 @@ defmodule UuleGrabber do
   """
   def uule_for_location(city) do
     length_index = rem(String.length(city), 64)
-    secret_key = Enum.at(base64_dictionary, length_index)
+    secret_key = Enum.at(base64_dictionary(), length_index)
     encoded_city = Base.encode64(city)
     "w+CAIQICI#{<<secret_key>>}#{encoded_city}"
     |> String.replace("=", "")
